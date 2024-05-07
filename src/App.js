@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import Home from './App/Pages/Home/Home';
+import Products from './App/Pages/Products/AllProducts';
+import Contact from './App/Pages/Contact';
+import { Route, Routes } from 'react-router-dom'
+import SingleProductDetails from './App/Pages/Products/ProductDetails/SingleProductDetails';
+import CategoryProducts from './App/Pages/Products/CategoryProducts'
+import PageNotFound from './App/Pages/PageNotFound';
+import Cart from './App/Pages/Cart';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Home />}/>
+        <Route path="category/:categoryName" element={<CategoryProducts />} />
+        <Route path="products" element={<Products />} />
+        <Route path="product/:productId" element={<SingleProductDetails />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+    </>
   );
 }
 
